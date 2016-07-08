@@ -1,11 +1,16 @@
 var fs = require ('fs');
 
 
-// logObject : {
-// 	offset: '',
-// 	methodName: '',
-// 	logLine: ''
-// };
+// 	Just instantiate with "new Logger()" and can log things via instance.logThis(string)
+// 
+//	Pass the folllowing object to instantiate logger with some options.
+//  configObject : {
+// 		offset: '',
+// 		methodName: '',
+// 		logLine: ''
+// 	}
+//	
+//	Pass the same object to logThis(configObject) to log once with given parameters
 
 function Logger (options)  {
 	if (!options) {options = {}};
