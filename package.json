@@ -1,0 +1,19 @@
+{
+  "name": "logman",
+  "version": "0.0.1",
+  "description": "The man who logs stuff for you",
+  "main": "logger.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DyckGerman/logman.git"
+  },
+  "author": "DyckGerman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DyckGerman/logman/issues"
+  },
+  "homepage": "https://github.com/DyckGerman/logman#readme"
+}
