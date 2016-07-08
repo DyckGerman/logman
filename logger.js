@@ -8,6 +8,7 @@ var fs = require ('fs');
 // };
 
 function Logger (options)  {
+	if (!options) {options = {}};
 	this.logFileName = 'log.txt';
 	this.methodName = options.methodName || 'unknownMethod';
 	this.offset = options.offset || 0;
@@ -17,6 +18,10 @@ function Logger (options)  {
 	};
 
 	this.logThis = (options) => {
+		if (options.constructor === String) {
+			options = {logLine: options};
+		}
+
 		var result = '';
 
 		var date = new Date();
