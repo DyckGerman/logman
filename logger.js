@@ -54,6 +54,7 @@ function Logger (options)  {
 
 		fs.appendFileSync(this.logFileName, result + '\n', 'utf-8');
 		process.stdout.write(result + '\n');
+		return result;
 	};
 };
 
