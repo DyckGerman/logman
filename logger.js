@@ -7,7 +7,8 @@ var fs = require ('fs');
 //  configObject : {
 // 		offset: '',
 // 		methodName: '',
-// 		logLine: ''
+// 		logLine: '',
+// 		date: ''
 // 	}
 //	
 //	Pass the same object to logThis(configObject) to log once with given parameters
@@ -17,6 +18,7 @@ function Logger (options)  {
 	this.logFileName = 'log.txt';
 	this.methodName = options.methodName || 'unknownMethod';
 	this.offset = options.offset || 0;
+	this.date = options.date || false;
 
 	this.cleanLog = () => {
 		fs.writeFileSync(this.logFileName, '', 'utf-8');
@@ -30,7 +32,11 @@ function Logger (options)  {
 		var result = '';
 
 		var date = new Date();
-		result += date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + '.' + date.getMilliseconds() + ' ';
+		if (options.date) {
+			result += date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + '.' + date.getMilliseconds() + ' ';
+		} else if (this.date && options.date != false) {
+			result += date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + '.' + date.getMilliseconds() + ' ';
+		};
 
 		if (options.offset) {
 			for (var i = 0; i < options.offset; i++) {
