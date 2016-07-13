@@ -22,3 +22,13 @@ Pass the folllowing object to instantiate logger with some options.
     var logMan = new Logman(configObject);
 	
 Pass the same object to `logThis(configObject)` to log once with given parameters
+
+### Testing
+
+Install Nodeunit testing framework with npm
+
+    npm install nodeunit -g
+    
+Run tests
+
+    nodeunit tests.js
