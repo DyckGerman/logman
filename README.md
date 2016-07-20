@@ -17,7 +17,9 @@ Pass the folllowing default object as argument to instantiate logger with some o
         offset: '0',                    // [Integer] number of heading spaces for log line
         methodName: 'unknownMethod',    // [String] prefix to display
         logLine: '',                    // [String] string to display
-        date: 'false'                   // [Boolean] date prefix enabler
+        date: false                     // [Boolean] date prefix enabler
+        logToFile: false,               // [Boolean] write logs to file
+        logToStdOut: true               // [Boolean] write logs stdout
     }
     
     var logMan = new Logman(configObject);

@@ -1,17 +1,22 @@
 var fs = require ('fs');
 
 
-// 	Just instantiate with "new Logger()" and can log things via instance.logThis(string)
-// 
-//	Pass the folllowing object to instantiate logger with some options.
-//  configObject : {
-// 		offset: '',
-// 		methodName: '',
-// 		logLine: '',
-// 		date: ''
-// 	}
+// Just instantiate it with `var logMan = new Logman()` to be ready to log things via `logman.logThis(string)`
+//
+// Pass the folllowing default object as argument to instantiate logger with some options.
+//
+//     var configObject : {
+//         offset: '0',                    // [Integer] number of heading spaces for log line
+//         methodName: 'unknownMethod',    // [String] prefix to display
+//         logLine: '',                    // [String] string to display
+//         date: false,                    // [Boolean] enable prefix with date
+//		   logToFile: false,			   // [Boolean] write logs to file
+//		   logToStdOut: true 			   // [Boolean] write logs stdout
+//     }
+//  
+//     var logMan = new Logman(configObject);
 //	
-//	Pass the same object to logThis(configObject) to log once with given parameters
+// Pass the same object to `logThis(configObject)` to log once with given parameters
 
 function Logger (options)  {
 	if (!options) {options = {}};
@@ -19,6 +24,10 @@ function Logger (options)  {
 	this.methodName = options.methodName || 'unknownMethod';
 	this.offset = options.offset || 0;
 	this.date = options.date || false;
+	this.targets = {
+		file : options.logToFile || false,
+		stdout : options.logToStdOut || true
+	};
 
 	this.cleanLog = () => {
 		fs.writeFileSync(this.logFileName, '', 'utf-8');
@@ -58,8 +67,18 @@ function Logger (options)  {
 			result += options.logLine;
 		};
 
-		fs.appendFileSync(this.logFileName, result + '\n', 'utf-8');
-		process.stdout.write(result + '\n');
+		if (options.logToFile) {
+			fs.appendFileSync(this.logFileName, result + '\n', 'utf-8');
+		} else if (this.targets.file && options.logToFile != false) {
+			fs.appendFileSync(this.logFileName, result + '\n', 'utf-8');
+		}
+
+		if (options.logToStdOut) {
+			process.stdout.write(result + '\n');
+		} else if (this.targets.stdout && options.logToStdOut != false) {
+			process.stdout.write(result + '\n');
+		}
+
 		return result;
 	};
 };
