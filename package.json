@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/DyckGerman/logman/issues"
   },
-  "homepage": "https://github.com/DyckGerman/logman#readme"
+  "homepage": "https://github.com/DyckGerman/logman#readme",
+  "devDependencies": {
+    "should": "^10.0.0"
+  }
 }
