@@ -28,10 +28,10 @@ Pass the same object to `logThis(configObject)` to log once with given parameter
 
 ### Testing
 
-Install Nodeunit testing framework with npm
+Install Mocha testing framework with npm
 
-    npm install nodeunit -g
+    npm install mocha -g
     
 Run tests
 
-    nodeunit tests.js
+    mocha test.js
