@@ -10,8 +10,8 @@ var fs = require ('fs');
 //         methodName: 'unknownMethod',    // [String] prefix to display
 //         logLine: '',                    // [String] string to display
 //         date: false,                    // [Boolean] enable prefix with date
-//		   logToFile: false,			   // [Boolean] write logs to file
-//		   logToStdOut: true 			   // [Boolean] write logs stdout
+//		     logToFile: false,               // [Boolean] write logs to file
+//		     logToStdOut: true               // [Boolean] write logs stdout
 //     }
 //  
 //     var logMan = new Logman(configObject);
@@ -24,9 +24,12 @@ function Logger (options)  {
 	this.methodName = options.methodName || 'unknownMethod';
 	this.offset = options.offset || 0;
 	this.date = options.date || false;
+
 	this.targets = {
-		file : options.logToFile || false,
-		stdout : options.logToStdOut || true
+		// false is default value for logging to file
+		file: options.logToFile ? true : false,
+		// true is default value for logging to stdout
+		stdout: options.logToStdOut == false ? false : true
 	};
 
 	this.cleanLog = () => {
