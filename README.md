@@ -14,13 +14,14 @@ Just instantiate it with `var logMan = new Logman()` to be ready to log things v
 Pass the folllowing default object as argument to instantiate logger with some options.
 
     var configObject : {
-        offset: '0',                    // [Integer] number of heading spaces for log line
-        methodName: 'unknownMethod',    // [String] prefix to display
-        logLine: '',                    // [String] string to display
-        date: false                     // [Boolean] date prefix enabler
-        logToFile: false,               // [Boolean] write logs to file
-        logToStdOut: true               // [Boolean] write logs stdout
-    }
+          offset: '0',                    // [Integer] number of heading spaces for log line
+          methodName: 'unknownMethod',    // [String] prefix to display
+          logLine: '',                    // [String] string to display
+          date: false,                    // [Boolean] enable prefix with date
+          logToFile: false,               // [Boolean] write logs to file
+          logToStdOut: true               // [Boolean] write logs stdout
+          logFilePath: "log.txt"          // [String] path to log file
+     }
     
     var logMan = new Logman(configObject);
 	
